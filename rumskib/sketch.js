@@ -1,6 +1,6 @@
 let x = 100;
 let y = 100;
-let b = 100;
+
 
 
 function setup() {
@@ -10,25 +10,7 @@ function setup() {
 
 
  
-function draw() {
-  
-   background(204);
-  x = x + 1;
-  if (x > width) {
-    x = 0;
-  }
-  
-  
-y = y + 1;  
-if(y>width){ 
-  y=50 
-}
-
-  
-  
-  
-  
-  
+function draw() {  
   if (keyIsDown(LEFT_ARROW)) {
     x -= 5;
   }
