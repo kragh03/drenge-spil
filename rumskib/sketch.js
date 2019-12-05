@@ -23,11 +23,7 @@ function draw() {
     y -= 5;
   }
 
-  
-  
-    
-  }
-
+ 
   clear();
 
   triangle(x+30, y+75, x+58, y+20, x+86, y+75);
