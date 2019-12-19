@@ -15,7 +15,7 @@ function draw() {
   ship.edges();
 
 for (var i = 0; i < asteroids.length; i++){
-
+  
   asteroids[i].render();
 }
 
