@@ -12,10 +12,7 @@ function setup() {
 
 function draw() {
   background(0);
-  ship.render();
-  ship.turn();
-  ship.update();
-  ship.edges();
+ 
 
   for (var i = 0; i < asteroids.length; i++) {
     asteroids[i].render();
@@ -27,6 +24,11 @@ function draw() {
     lasers[i].update();
 
   }
+  ship.render();
+  ship.turn();
+  ship.update();
+  ship.edges();
+
 }
 function keyReleased() {
   ship.setRotation(0);
