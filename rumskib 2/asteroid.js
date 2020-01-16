@@ -12,7 +12,6 @@ this.update = function(){
     this.pos.add(this.vel);
 }
 
-// min ynglings farve er  rød 
 
     this.render = function () {
         push();
