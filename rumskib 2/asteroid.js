@@ -13,7 +13,6 @@ this.update = function(){
 }
 
 
-
     this.render = function () {
         push();
         stroke(255);
