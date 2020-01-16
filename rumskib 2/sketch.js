@@ -19,15 +19,15 @@ function draw() {
     asteroids[i].update();
     asteroids[i].edges();
   }
-  for (var i = lasers.length-1; i >=0 ; i--) {
+  for (var i = lasers.length - 1; i >= 0; i--) {
     lasers[i].render();
     lasers[i].update();
     for (var j = asteroids.length - 1; j >= 0; j--) {
       if (lasers[i].hits(asteroids[j])) {
-        var newAsteroids = asteroids[j].breakup();
-        console.log(newAsteroids);
-        asteroids = asteroids.concat(newAsteroids);
-        console.log(asteroids);
+        if (asteroids[j].r > 10) {
+          var newAsteroids = asteroids[j].breakup();
+          asteroids = asteroids.concat(newAsteroids);
+        }
         asteroids.splice(j, 1);
         lasers.splice(i, 1);
         break;
