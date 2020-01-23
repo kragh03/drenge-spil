@@ -19,10 +19,10 @@ function draw() {
   background(0);
 
 
-
   for (let i = 0; i < asteroids.length; i++) {
     if (ship.hits(asteroids[i])) {
-
+      let rød=background(255,0,0)
+      rød
       //console.log('ups');
     }
     asteroids[i].render();
