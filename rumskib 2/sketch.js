@@ -14,9 +14,11 @@ function draw() {
   background(0);
 
 
+
   for (var i = 0; i < asteroids.length; i++) {
     if (ship.hits(asteroids[i])) {
       console.log('ooops!');
+      console.log('ups');
     }
     asteroids[i].render();
     asteroids[i].update();
@@ -40,6 +42,8 @@ function draw() {
 
 
   }
+
+
 
   ship.render();
   ship.turn();
@@ -134,3 +138,7 @@ function Ship() {
 
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> aa8896b5208fac73fdc0ea51613500e98e4179aa
