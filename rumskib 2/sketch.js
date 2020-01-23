@@ -15,10 +15,14 @@ function draw() {
 
 
   for (var i = 0; i < asteroids.length; i++) {
+    if (ship.hits(asteroids[i])) {
+      console.log('ooops!');
+    }
     asteroids[i].render();
     asteroids[i].update();
     asteroids[i].edges();
   }
+
   for (var i = lasers.length - 1; i >= 0; i--) {
     lasers[i].render();
     lasers[i].update();
@@ -33,6 +37,8 @@ function draw() {
         break;
       }
     }
+
+
   }
 
   ship.render();
@@ -127,8 +133,4 @@ function Ship() {
   }
 
 }
-
-
-
-
 
