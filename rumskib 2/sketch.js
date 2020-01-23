@@ -1,13 +1,18 @@
+let song;
 let ship;
 let asteroids = [];
 let lasers = [];
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  song = loadSound("sound/skrig.mp3", loaded);
   ship = new Ship();
   for (let i = 0; i < 5; i++) {
     asteroids.push(new Asteroid());
   }
+}
+function loaded() {
+  song.play();
 }
 
 function draw() {
@@ -17,7 +22,8 @@ function draw() {
 
   for (let i = 0; i < asteroids.length; i++) {
     if (ship.hits(asteroids[i])) {
-      console.log('ups');
+
+      //console.log('ups');
     }
     asteroids[i].render();
     asteroids[i].update();
@@ -29,7 +35,7 @@ function draw() {
     lasers[i].update();
     for (let j = asteroids.length - 1; j >= 0; j--) {
       if (lasers[i].hits(asteroids[j])) {
-        if (asteroids[j].r > 10) {
+        if (asteroids[j].r > 20) {
           let newAsteroids = asteroids[j].breakup();
           asteroids = asteroids.concat(newAsteroids);
         }
