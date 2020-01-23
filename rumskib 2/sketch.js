@@ -1,11 +1,11 @@
-var ship;
-var asteroids = [];
-var lasers = [];
+let ship;
+let asteroids = [];
+let lasers = [];
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
   ship = new Ship();
-  for (var i = 0; i < 5; i++) {
+  for (let i = 0; i < 5; i++) {
     asteroids.push(new Asteroid());
   }
 }
@@ -15,9 +15,8 @@ function draw() {
 
 
 
-  for (var i = 0; i < asteroids.length; i++) {
+  for (let i = 0; i < asteroids.length; i++) {
     if (ship.hits(asteroids[i])) {
-      console.log('ooops!');
       console.log('ups');
     }
     asteroids[i].render();
@@ -25,13 +24,13 @@ function draw() {
     asteroids[i].edges();
   }
 
-  for (var i = lasers.length - 1; i >= 0; i--) {
+  for (let i = lasers.length - 1; i >= 0; i--) {
     lasers[i].render();
     lasers[i].update();
-    for (var j = asteroids.length - 1; j >= 0; j--) {
+    for (let j = asteroids.length - 1; j >= 0; j--) {
       if (lasers[i].hits(asteroids[j])) {
         if (asteroids[j].r > 10) {
-          var newAsteroids = asteroids[j].breakup();
+          let newAsteroids = asteroids[j].breakup();
           asteroids = asteroids.concat(newAsteroids);
         }
         asteroids.splice(j, 1);
@@ -72,73 +71,3 @@ function keyPressed() {
 }
 
 
-
-function Ship() {
-  this.pos = createVector(width / 2, height / 2);
-  //r er størrelse på skibet 
-  this.r = 20;
-  this.heading = 0;
-  this.rotation = 0;
-  this.vel = createVector(0, 0);
-  this.isBoosting = false;
-
-
-  this.boosting = function (b) {
-    this.isBoosting = b;
-  }
-
-  this.update = function () {
-    if (this.isBoosting) {
-      this.boost();
-    }
-    this.pos.add(this.vel);
-    //stopper skibet igen så den ikke forsætter
-    this.vel.mult(0.99);
-  }
-  // kald den måske fartstribe
-  this.boost = function () {
-    var force = p5.Vector.fromAngle(this.heading);
-    force.mult(0.1);
-    this.vel.add(force);
-  }
-
-
-  this.render = function () {
-    push();
-    translate(this.pos.x, this.pos.y);
-    rotate(this.heading + PI / 2);
-    //tømme skibet og gøre stregen hvid
-    noFill();
-    stroke(255);
-    triangle(-this.r, this.r, this.r, this.r, 0, -this.r);
-    pop();
-  }
-
-  this.edges = function () {
-    if (this.pos.x > width + this.r) {
-      this.pos.x = -this.r;
-    } else if (this.pos.x < -this.r) {
-      this.pos.x = width + this.r;
-    }
-    if (this.pos.y > height + this.r) {
-      this.pos.y = -this.r;
-    } else if (this.pos.y < -this.r) {
-      this.pos.y = height + this.r;
-    }
-  }
-
-
-  this.setRotation = function (a) {
-    this.rotation = a;
-  }
-
-  this.turn = function (angle) {
-    this.heading += this.rotation;
-  }
-
-}
-
-<<<<<<< HEAD
-=======
-
->>>>>>> aa8896b5208fac73fdc0ea51613500e98e4179aa
