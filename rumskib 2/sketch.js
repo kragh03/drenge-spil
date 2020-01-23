@@ -21,8 +21,9 @@ function draw() {
 
   for (let i = 0; i < asteroids.length; i++) {
     if (ship.hits(asteroids[i])) {
-      let rød=background(255,0,0)
+      let rød=background(255,0,0);
       rød
+      song.play();
       //console.log('ups');
     }
     asteroids[i].render();
