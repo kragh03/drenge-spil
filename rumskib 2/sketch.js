@@ -31,7 +31,7 @@ function draw() {
       text(word, 500, 500); // draw the word
 
       if (!song.isPlaying()) {
-      song.play();
+        song.play();
       }
       //console.log('ups');
     }
@@ -74,7 +74,7 @@ function keyReleased() {
 
 // drejning af skip
 function keyPressed() {
- 
+
   if (key == ' ') {
     skyd.play();
 
