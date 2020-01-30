@@ -1,5 +1,7 @@
 let song;
-let skyd
+let skyd;
+let ram;
+let frem;
 let ship;
 let asteroids = [];
 let lasers = [];
@@ -7,7 +9,9 @@ let lasers = [];
 function setup() {
   createCanvas(windowWidth, windowHeight);
   song = loadSound("sound/skrig.mp3", loaded);
-  skyd = loadSound("sound/bang1.mp3");
+  skyd = loadSound("sound/pew1.mp3");
+  frem = loadSound("sound/piv.mp3");
+  ram = loadSound("sound/bang1.mp3");
   ship = new Ship();
   for (let i = 0; i < 5; i++) {
     asteroids.push(new Asteroid());
@@ -45,6 +49,8 @@ function draw() {
     lasers[i].update();
     for (let j = asteroids.length - 1; j >= 0; j--) {
       if (lasers[i].hits(asteroids[j])) {
+        ram.play();
+
         if (asteroids[j].r > 20) {
           let newAsteroids = asteroids[j].breakup();
           asteroids = asteroids.concat(newAsteroids);
@@ -84,6 +90,8 @@ function keyPressed() {
   } else if (keyCode == LEFT_ARROW) {
     ship.setRotation(-0.1);
   } else if (keyCode == UP_ARROW) {
+    frem.play();
+    frem.setVolume(0.1);
     ship.boosting(true);
   }
 
