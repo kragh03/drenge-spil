@@ -1,4 +1,5 @@
-let song;
+let død;
+let start;
 let skyd;
 let ram;
 let frem;
@@ -8,17 +9,18 @@ let lasers = [];
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  song = loadSound("sound/skrig.mp3", loaded);
+  død = loadSound("sound/skrig.mp3", loaded);
   skyd = loadSound("sound/pew1.mp3");
   frem = loadSound("sound/piv.mp3");
   ram = loadSound("sound/bang1.mp3");
+  start = loadSound("sound/crape.mp3");
   ship = new Ship();
   for (let i = 0; i < 5; i++) {
     asteroids.push(new Asteroid());
   }
 }
 function loaded() {
-  song.play();
+  start.play();
 }
 
 function draw() {
@@ -34,8 +36,8 @@ function draw() {
       textSize(32)
       text(word, 500, 500); // draw the word
 
-      if (!song.isPlaying()) {
-        song.play();
+      if (!død.isPlaying()) {
+        død.play();
       }
       //console.log('ups');
     }
@@ -83,6 +85,7 @@ function keyPressed() {
 
   if (key == ' ') {
     skyd.play();
+    skyd.setVolume(0.1);
 
     lasers.push(new Laser(ship.pos, ship.heading));
   } else if (keyCode == RIGHT_ARROW) {
