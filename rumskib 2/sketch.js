@@ -21,8 +21,13 @@ function draw() {
 
   for (let i = 0; i < asteroids.length; i++) {
     if (ship.hits(asteroids[i])) {
-      let rød=background(255,0,0);
+      let rød = background(255, 0, 0);
       rød
+      let words = ['MIN YNGLINGS FARVE ER RØD'];
+      let word = random(words); // select random word
+      textSize(32)
+      text(word, 500, 500); // draw the word
+
       song.play();
       //console.log('ups');
     }
