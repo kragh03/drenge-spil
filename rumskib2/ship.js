@@ -9,6 +9,7 @@ function Ship() {
   this.isBoosting = false;
 
 
+
   this.boosting = function (b) {
     this.isBoosting = b;
   }

@@ -6,6 +6,8 @@ let frem;
 let ship;
 let asteroids = [];
 let lasers = [];
+let score = 0;
+
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -29,6 +31,18 @@ function loaded() {
 function draw() {
   background(0);
 
+  textSize(32)
+  fill('red');
+  text(score, 200, 50);
+
+  if (score > 3) {
+    fill('red')
+    let win = ['Du er bedre en Hans Mikkel'];
+    let word = random(win);
+    text(word, 500, 500);
+
+  }
+
 
   for (let i = 0; i < asteroids.length; i++) {
     if (ship.hits(asteroids[i])) {
@@ -43,6 +57,9 @@ function draw() {
         død.play();
       }
       //console.log('ups');
+
+
+
     }
     asteroids[i].render();
     asteroids[i].update();
@@ -55,6 +72,7 @@ function draw() {
     for (let j = asteroids.length - 1; j >= 0; j--) {
       if (lasers[i].hits(asteroids[j])) {
         ram.play();
+        score++
 
         if (asteroids[j].r > 20) {
           let newAsteroids = asteroids[j].breakup();
@@ -106,6 +124,8 @@ function keyPressed() {
       frem.setVolume(0.1);
     }
     ship.boosting(true);
+
+
   }
 
 }
