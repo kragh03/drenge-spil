@@ -17,7 +17,7 @@ function setup() {
   ship = new Ship();
   for (let i = 0; i < 15; i++) {
     asteroids.push(new Asteroid());
-    
+
   }
 }
 
@@ -78,9 +78,14 @@ function draw() {
 }
 function keyReleased() {
   ship.setRotation(0);
-  ship.boosting(false);
-}
+  if (keyCode === UP_ARROW) {
+    ship.boosting(false);
+  }
+  // if (keyCode == UP_ARROW) {
+  //   ship.setRotation(0);
+  // } 
 
+}
 
 
 // drejning af skip
@@ -96,9 +101,9 @@ function keyPressed() {
   } else if (keyCode == LEFT_ARROW) {
     ship.setRotation(-0.1);
   } else if (keyCode == UP_ARROW) {
-    if (!frem.isPlaying()){
-    frem.play();
-    frem.setVolume(0.1);
+    if (!frem.isPlaying()) {
+      frem.play();
+      frem.setVolume(0.1);
     }
     ship.boosting(true);
   }
