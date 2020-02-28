@@ -37,7 +37,7 @@ function draw() {
 
   if (score > 3) {
     fill('red')
-    let win = ['Du er bedre en Hans Mikkel'];
+    let win = ['Du er bedre end Hans Mikkel'];
     let word = random(win);
     text(word, 500, 500);
 
